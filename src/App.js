@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/header";
+import Body from "./components/body";
+import Footer from "./components/footer";
+import InsertUser from "./components/insertUser";
+import InsertCompany from "./components/insertCompany";
+import ManageUser from "./components/manageUser";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Body} />
+          <Route path="/insertUser" component={InsertUser} />
+          <Route path="/insertCompany" component={InsertCompany} />
+          <Route path="/manageUser" component={ManageUser} />
+        </Switch>
+        <Footer />
+      </>
+    </Router>
   );
 }
 
